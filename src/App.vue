@@ -65,7 +65,7 @@ const tone = (v) => (v > 0 ? 'pos' : v < 0 ? 'neg' : 'zero')
             <th scope="row" class="c-name">
               <span class="player">
                 <span class="avatar">
-                  <img v-if="p.avatar" :src="avatarUrl(p.avatar)" alt="" loading="lazy" />
+                  <img v-if="p.avatar" :src="avatarUrl(p.avatar)" alt="" width="256" height="256" loading="lazy" />
                   <span v-else class="initials" aria-hidden="true">{{ initials(p.name) }}</span>
                   <Crown v-if="p.rank === 1" class="crown" aria-label="Primo classificato" />
                 </span>

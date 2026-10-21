@@ -207,10 +207,13 @@ tbody .c-num {
 }
 
 .avatar {
+  --size: clamp(2.4rem, 5.5vw, 3.6rem);
   position: relative;
-  flex: none;
-  width: clamp(2.4rem, 5.5vw, 3.6rem);
-  aspect-ratio: 1;
+  flex: 0 0 var(--size);
+  /* Dimensioni esplicite: su Safari mobile aspect-ratio dentro flex/table non basta e la foto si allunga */
+  width: var(--size);
+  height: var(--size);
+  min-width: var(--size);
   border-radius: 50%;
   background: #0b2318;
   box-shadow: 0 0 0 2px var(--border);
@@ -225,7 +228,9 @@ tbody .c-num {
 
 .avatar img {
   display: block;
+  max-width: none;
   object-fit: cover;
+  object-position: center;
 }
 
 .avatar .initials {
@@ -334,5 +339,27 @@ abbr {
 @media (prefers-reduced-motion: reduce) {
   tbody tr {
     transition: none;
+  }
+}
+
+/* Telefoni piccoli (es. iPhone SE) */
+@media (max-width: 380px) {
+  tbody td,
+  tbody th {
+    padding: 0.65rem 0.3rem;
+    font-size: 0.95rem;
+  }
+  thead th {
+    padding-inline: 0.3rem;
+  }
+  .badge {
+    width: 1.7rem;
+    font-size: 0.8rem;
+  }
+  .avatar {
+    --size: 2.1rem;
+  }
+  .player {
+    gap: 0.45rem;
   }
 }
