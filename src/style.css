@@ -1,0 +1,338 @@
+:root {
+  --bg: #07130e;
+  --felt: #0d3b27;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hi: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #e9efe9;
+  --muted: #8ba596;
+  --gold: #f2c75c;
+  --silver: #c9d3dc;
+  --bronze: #d99a6c;
+  --pos: #4ade80;
+  --neg: #f87171;
+  --red: #e5484d;
+
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --display: 'Space Grotesk', var(--sans);
+
+  color-scheme: dark;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, var(--felt) 0%, transparent 70%),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 0) 0 0 / 22px 22px,
+    var(--bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vh, 3rem);
+  padding: clamp(1.5rem, 5vh, 4rem) 16px;
+}
+
+/* Titolo */
+.brand {
+  text-align: center;
+}
+
+.suits {
+  display: block;
+  font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+  letter-spacing: 0.6em;
+  margin-right: -0.6em;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0.25rem 0 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+h1 span {
+  background: linear-gradient(120deg, var(--gold), #ffe9a8 50%, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Serate giocate */
+.nights {
+  margin: calc(-1 * clamp(0.5rem, 2vh, 1.5rem)) 0 0;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  color: var(--muted);
+}
+
+.nights strong {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--gold);
+  margin-right: 0.15em;
+}
+
+/* Classifica */
+.board {
+  width: min(100%, 980px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: clamp(16px, 2vw, 28px);
+  padding: clamp(0.5rem, 1.5vw, 1.25rem);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 clamp(4px, 0.8vw, 8px);
+  font-variant-numeric: tabular-nums;
+}
+
+thead th {
+  font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  padding: 0.5rem clamp(0.5rem, 2vw, 1.5rem) 0.25rem;
+}
+
+tbody tr {
+  background: var(--surface);
+  transition: background 0.2s, transform 0.2s;
+}
+
+tbody tr:hover {
+  background: var(--surface-hi);
+  transform: translateY(-1px);
+}
+
+tbody td,
+tbody th {
+  padding: clamp(0.75rem, 2.2vw, 1.4rem) clamp(0.5rem, 2vw, 1.5rem);
+  font-size: clamp(1.05rem, 2.8vw, 1.9rem);
+  vertical-align: middle;
+}
+
+tbody tr > :first-child {
+  border-radius: 14px 0 0 14px;
+}
+tbody tr > :last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+.c-rank {
+  width: 1%;
+  text-align: center;
+}
+
+.c-name {
+  text-align: left;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.c-num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+tbody .c-num {
+  font-weight: 500;
+}
+
+.badge {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: clamp(2rem, 4.5vw, 3rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  color: var(--muted);
+  border: 2px solid var(--border);
+}
+
+/* Giocatore: avatar + nome */
+.player {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.6vw, 1.1rem);
+}
+
+.player-name {
+  /* Space Grotesk ha metriche più alte di Inter: lo abbasso per allinearlo otticamente ai numeri */
+  line-height: 1;
+  transform: translateY(0.08em);
+}
+
+.avatar {
+  position: relative;
+  flex: none;
+  width: clamp(2.4rem, 5.5vw, 3.6rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #0b2318;
+  box-shadow: 0 0 0 2px var(--border);
+}
+
+.avatar img,
+.avatar .initials {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar img {
+  display: block;
+  object-fit: cover;
+}
+
+.avatar .initials {
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: clamp(0.8rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--muted);
+  background: linear-gradient(135deg, #164a33, #0b2318);
+}
+
+.rank-1 .avatar {
+  box-shadow: 0 0 0 2px var(--gold), 0 0 22px -4px var(--gold);
+}
+
+/* Corona del primo classificato, appoggiata di traverso sulla testa */
+.crown {
+  position: absolute;
+  top: -42%;
+  right: -22%;
+  width: 66%;
+  height: auto;
+  color: var(--gold);
+  fill: rgba(242, 199, 92, 0.35);
+  stroke-width: 2.25;
+  transform: rotate(28deg);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+/* Podio */
+.rank-1 .badge {
+  color: #2a1f00;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 24px -4px var(--gold);
+}
+.rank-2 .badge {
+  color: #1a1f24;
+  background: var(--silver);
+  border-color: var(--silver);
+}
+.rank-3 .badge {
+  color: #2a1608;
+  background: var(--bronze);
+  border-color: var(--bronze);
+}
+
+tbody tr.rank-1 {
+  background: linear-gradient(90deg, rgba(242, 199, 92, 0.14), var(--surface) 60%);
+}
+
+.money {
+  font-weight: 700 !important;
+}
+.money.pos {
+  color: var(--pos);
+}
+.money.neg {
+  color: var(--neg);
+}
+.money.zero {
+  color: var(--muted);
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.short {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+  .board {
+    padding: 0.35rem;
+  }
+  tbody td,
+  tbody th {
+    padding: 0.8rem 0.45rem;
+  }
+  tbody .c-num:not(.money) {
+    color: var(--muted);
+  }
+  tbody tr > :first-child {
+    border-radius: 10px 0 0 10px;
+  }
+  tbody tr > :last-child {
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tbody tr {
+    transition: none;
+  }
+}

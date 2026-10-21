@@ -1,0 +1,10 @@
+{
+  "updatedAt": "2026-10-21",
+  "players": [
+    { "name": "Stigna", "avatar": "avatars/stigna.webp", "wins": 1, "games": 1, "money": 60 },
+    { "name": "Gauß", "avatar": "avatars/gauss.webp", "wins": 0, "games": 1, "money": 0 },
+    { "name": "Il Flo", "avatar": "avatars/miguel.webp", "wins": 0, "games": 1, "money": 0 },
+    { "name": "Bene", "avatar": "avatars/titta.webp", "wins": 0, "games": 1, "money": 0 },
+    { "name": "GSfo", "wins": 0, "games": 1, "money": 0 }
+  ]
+}
