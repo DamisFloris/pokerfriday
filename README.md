@@ -21,7 +21,7 @@ Modifica solo `src/data/leaderboard.json`:
 - `money` — saldo totale in euro (può essere negativo)
 - `updatedAt` — data dell'ultimo aggiornamento (`AAAA-MM-GG`)
 
-La classifica è ordinata per soldi, poi vittorie, poi meno partite giocate. A parità completa vale l'ordine in cui i giocatori compaiono nel file.
+La classifica è ordinata per soldi, poi vittorie, poi meno partite giocate; chi non ha ancora giocato sta in fondo. A parità completa vale l'ordine in cui i giocatori compaiono nel file.
 
 Poi:
 

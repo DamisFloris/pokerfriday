@@ -5,6 +5,6 @@
     { "name": "Gauß", "avatar": "avatars/gauss.webp", "wins": 0, "games": 1, "money": 0 },
     { "name": "Il Flo", "avatar": "avatars/miguel.webp", "wins": 0, "games": 1, "money": 0 },
     { "name": "Bene", "avatar": "avatars/titta.webp", "wins": 0, "games": 1, "money": 0 },
-    { "name": "GSfo", "wins": 0, "games": 1, "money": 0 }
+    { "name": "GSfo", "wins": 0, "games": 0, "money": 0 }
   ]
 }

@@ -3,9 +3,10 @@ import { Crown } from 'lucide-vue-next'
 import { computed } from 'vue'
 import data from './data/leaderboard.json'
 
-// Classifica: prima per soldi totali, poi per vittorie, poi per meno partite giocate.
+// Classifica: chi non ha mai giocato va in fondo; poi soldi totali, vittorie, meno partite giocate.
 // A parità completa vale l'ordine del file JSON (il sort è stabile).
-const compare = (a, b) => b.money - a.money || b.wins - a.wins || a.games - b.games
+const compare = (a, b) =>
+  (a.games === 0) - (b.games === 0) || b.money - a.money || b.wins - a.wins || a.games - b.games
 
 const rows = computed(() => [...data.players].sort(compare).map((p, i) => ({ ...p, rank: i + 1 })))
 
