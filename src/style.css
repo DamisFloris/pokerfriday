@@ -210,7 +210,7 @@ tbody .c-num {
   --size: clamp(2.4rem, 5.5vw, 3.6rem);
   position: relative;
   flex: 0 0 var(--size);
-  /* Dimensioni esplicite: su Safari mobile aspect-ratio dentro flex/table non basta e la foto si allunga */
+  /* Altezza esplicita: con solo aspect-ratio, WebKit fa crescere il box fino all'altezza naturale della foto (256px) */
   width: var(--size);
   height: var(--size);
   min-width: var(--size);
